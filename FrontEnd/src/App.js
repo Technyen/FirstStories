@@ -5,6 +5,7 @@ import { createUser } from "./Services/userService";
 
 
 
+
 export default function App() {
   const [buttonPop, setButtonPop] = useState(false);
 
@@ -16,12 +17,14 @@ export default function App() {
         <br></br>
         <button onClick={() => setButtonPop(true)}>Create Stories</button>
         <br></br>
-        <button onClick={createUser}>Register</button>
+        
 
       </main>
 
       <RegisterPop trigger={buttonPop} setTrigger={setButtonPop}>
         <h3>Log in</h3>
+      <button className='register-btn' onClick={createUser}>Register</button>
+
       </RegisterPop>
 
     </div>
