@@ -1,23 +1,29 @@
-import { createUser } from "./Services/userService";
 import React from "react";
+import RegisterPop from "./Components/RegisterPop";
+import { useState } from "react";
+import { createUser } from "./Services/userService";
 
 
 
 export default function App() {
-  // const [post, setPost] = React.useState(null);
+  const [buttonPop, setButtonPop] = useState(false);
 
-  // React.useEffect(() => {
-  //   axios.get(`${baseURL}/1`).then((response) => {
-  //     setPost(response.data);
-  //   });
-  // }, []);
-
-  
   return (
-    <div>
-      <h1>CUENTOS INFANTILES</h1>
-      <p>Crear Cuentos</p>
-      <button onClick={createUser}>Registrarse</button>
+    <div className="App">
+      <main>
+        <h1>CHILDREN'S STORIES</h1>
+        <p>Create Stories</p>
+        <br></br>
+        <button onClick={() => setButtonPop(true)}>Create Stories</button>
+        <br></br>
+        <button onClick={createUser}>Register</button>
+
+      </main>
+
+      <RegisterPop trigger={buttonPop} setTrigger={setButtonPop}>
+        <h3>Log in</h3>
+      </RegisterPop>
+
     </div>
   );
 }
