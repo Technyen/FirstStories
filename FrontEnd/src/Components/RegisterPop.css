@@ -1,11 +1,10 @@
 .registerPop{
     position:fixed;
-    top:0;
+    top: 0;;
     left:0;
     width: 100%;
     height: 100vh;
-    background-color: rgba(72, 72, 72, 0.2);
-    
+    background-color: rgba(33, 33, 33, 0.2);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,9 +13,13 @@
 
 .registerPop-inner{
     position: relative;
+    align-items: center;
     padding: 32px;
     width: 100%;
+    border-radius: 20px;
+    justify-content: center;
     max-width: 640px;
+    align-items: center;
     background-color: #ffffff;
 }
 
@@ -25,3 +28,21 @@
     top: 16px;
     right: 16px;
 }
+
+.register-btn{
+    width: 75%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(48,172,251);
+    color: white;
+    margin-top: 5px;
+    border-radius: 20px;
+    border: none;
+    font-size: 15pt;
+    font-weight: 700;
+    transition: 1s;
+    outline: none;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
