@@ -1,28 +1,18 @@
-import React from "react";
+import React, { useState } from 'react';
 import './LoginForm.css';
 
-const LoginForm = ({ isShowLogin }) => {
+function LoginForm(props) {
+  return (
+     <div className="login-form">
+      <h1>Log In</h1>
+      <input type="text" placeholder='enter you email'/><br></br>
+      <input type="text" placeholder='enter you password'/>
+      <button>Register</button>
+      <p>Create account?</p> <a style={{color:"red",cursor:'pointer'}} onClick={()=>props.setLoginForm(false)}>Signup</a>
+    </div>
 
-    return (
-        <div className={'${!isShowLogin ? "active":""}show'}>
-            <div className="login-form">
-                <div className="form-box solid">
-                    <form>
-                        <h1 className="login-text">Sign In</h1>
-                        <label>UserName</label><br></br>
-                        <input type=" text"
-                            name="username"
-                            className="login-box" /><br></br>
-                        <label>Password</label><br></br>
-                        <input type="password"
-                            name="password"
-                            className="login-box" /><br></br>
-                        <input type="submit" value="LOGIN" className="login-btn" />
-                    </form>
-                </div>
-            </div>
-        </div>
-    );
 
-    }
-export default LoginForm;
+  ) 
+}
+
+export default LoginForm

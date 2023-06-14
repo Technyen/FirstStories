@@ -1,37 +1,39 @@
 import React from "react";
-import RegisterPop from "./Components/RegisterPop";
 import { useState } from "react";
 import { createUser } from "./Services/userService";
-import LoginForm from "./Components/LoginForm";
-import SignUpForm from "./Components/SignUpForm";
-
-
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from './Components/Header';
+import LoginForm from './Components/LoginForm';
+import RegisterForm from './Components/RegisterForm';
 
 export default function App() {
   const [buttonPop, setButtonPop] = useState(false);
-  const [isShowLogin, setIsShowLogin] = useState(true);
+  const [loginForm, setLoginForm] = useState(true);
+
+  // const handleLoginClick = () => {
+  //   setIsShowLogin((isShowLogin) => !isShowLogin);
+  // };
 
 
-  const handleLoginClick = () => {
-    setIsShowLogin((isShowLogin) => !isShowLogin);
-  };
   return (
-    <div className="App">
-      <main>
-        <h1>CHILDREN'S STORIES</h1>
-        <p>Make you own stories and share with your kids</p>
-        <br></br>
-        <button onClick={() => setButtonPop(true)}>Create Stories</button>
-      </main>
+    <div className="Header">
+      <Header />
+      <div className="App">
 
-      <RegisterPop trigger={buttonPop} setTrigger={setButtonPop}/>
-              
-      
-     
-     
-      
+        <main>
 
+          <h1>CHILDREN'S STORIES</h1>
+          <p>Make you own stories and share with your kids</p>
+          <br></br>
+          <button onClick={() => setButtonPop(true)}>Create Stories</button>
+          {
+            loginForm ?
+              <LoginForm setLoginForm={setLoginForm}/>
+              : <RegisterForm setLoginForm ={setLoginForm} />
+          }
+        </main>
+
+      </div>
     </div>
-  );
+  )
 }
