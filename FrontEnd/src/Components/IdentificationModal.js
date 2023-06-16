@@ -7,16 +7,16 @@ import RegisterForm from './RegisterForm';
 
 
 export default function IdentificationModal(props) {
-  const [isLoginForm, setIsLoginForm] = useState(true);
+  const [isUserRegistered,setIsUserRegistered]=useState(true);
 
-    return (props.trigger) ? (
+    return (props.showModal) ? (
         <div className="popup">
             <div className="popup-inner">
-                <button className="close-btn" onClick={()=>props.setTrigger(false)}>Close</button>
+                <button className="close-btn" onClick={()=>props.setShowModal(false)}>Close</button>
                 {
-                    isLoginForm?
-                    <LoginForm setLoginForm={setIsLoginForm}/>
-                  : <RegisterForm setLoginForm ={setIsLoginForm} />
+                    isUserRegistered?
+                    <LoginForm setIsUserRegistered={setIsUserRegistered}/>
+                  : <RegisterForm setIsUserRegistered ={setIsUserRegistered} />
 
                 }
                 

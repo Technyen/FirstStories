@@ -7,8 +7,8 @@ function RegisterForm(props) {
         <input type='text' placeholder='enter your Name'/><br></br>
         <input type='text' placeholder='enter your email'/><br></br>
         <input type= 'text' placeholder=' enter your password'/> 
-        <button>Sign Up</button>
-        <p>Already have an Account ? <a style={{color:"red",cursor:'pointer'}} onClick={()=>{props.setLoginForm(true)}}>SignIn</a></p>
+        <button onClick={()=>{props.setIsUserRegistered(true)}}>Sign Up</button>
+        <p>Already have an Account ? <a style={{color:"red",cursor:'pointer'}} onClick={()=>{props.setIsUserRegistered(true)}}>SignIn</a></p>
       </div>
     ) 
   }

@@ -1,24 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
+import IdentificationModal from './IdentificationModal';
+import './CreateStoriesModal.css';
+function CreateStoriesModal(props) {
+  
+  
 
-function CreateStoriesModal() {
-  return (
+  return (props.showModal)?(
     <div className='createStoriesWindow'>
-      <form>
-      <h2>Create Your Story</h2>
+      <div className='createStories-inner'>
+        <button className='createStories-close-btn' onClick={()=>props.setShowModal(false)}>Close</button>
+          <form>
+            <h2>Create Your Story</h2>
 
-      <label>Title:</label>
-      <input /><br></br>
+            <label>Title:</label>
+            <input /><br></br>
 
-      <label>Category:</label>
-      <input /><br></br>
+            <label>Category:</label>
+            <input /><br></br>
 
-      <label>Story:</label>
-      <textarea /><br></br>
+            <label>Story:</label>
+            <textarea /><br></br>
 
-      <button type="submit">Submit</button>
-    </form>
-    </div>
-  )
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    
+
+  ) :null;
 }
 
 export default CreateStoriesModal

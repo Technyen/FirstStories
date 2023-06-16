@@ -7,8 +7,9 @@ import CreateStoriesModal from "./Components/CreateStoriesModal";
 import IdentificationModal from "./Components/IdentificationModal";
 
 export default function App() {
-  const [buttonPopup, setButtonPopup] = useState(false);
-  const [isUserIdentified, setIisUserIdentified]=useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [isUserIndentified, setIsUserIdendified]=useState(false);
+ 
 
 
   return (
@@ -19,10 +20,16 @@ export default function App() {
           <h1>CHILDREN'S STORIES</h1>
           <p>Make you own stories and share with your kids</p>
           <br></br>
-          <button type="button" class="btn btn-info btn-lg" data-toggle="modal" onClick={()=>setButtonPopup(true)}>Create Stories</button>
-         <IdentificationModal trigger={buttonPopup} setTrigger={setButtonPopup}/>
+          <button type="button" class="btn btn-info btn-lg" data-toggle="modal" onClick={()=>setShowModal(true)}>Create Stories</button>
+        {
+        isUserIndentified?
+         <CreateStoriesModal showModal={showModal} setShowModal={setShowModal}/>:
+         <IdentificationModal showModal={showModal} setShowModal={setShowModal}/>
+
+        }
+         
         </main>
-        <CreateStoriesModal/>
+       
       </div>
     </div>
   );
