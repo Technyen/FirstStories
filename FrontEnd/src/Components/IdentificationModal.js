@@ -15,8 +15,8 @@ export default function IdentificationModal(props) {
                 <button className="close-btn" onClick={()=>props.setShowModal(false)}>Close</button>
                 {
                     isUserRegistered?
-                    <LoginForm setIsUserRegistered={setIsUserRegistered}/>
-                  : <RegisterForm setIsUserRegistered ={setIsUserRegistered} />
+                    <LoginForm setIsUserRegistered={setIsUserRegistered} setIsUserIdendified={props.setIsUserIdendified}/>
+                  : <RegisterForm setIsUserRegistered ={setIsUserRegistered} setIsUserIdendified={props.setIsUserIdendified}/>
 
                 }
                 

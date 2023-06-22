@@ -2,20 +2,18 @@ import axios from "axios";
 
 
 const baseURL = "https://localhost:7078/Users";
-export function createUser() {
+export function createUser(name,email,password) {
+
     axios
       .post(baseURL, {
-      
-        name: "Abcde",
-        email:"juang@123.com",
-        password:"123456"
+      name:name,
+      email:email,
+      password:password
       })
-      .then((response) => {
-       console.log(response.data) ;
+      .then(response => {
+       console.log(response.data);
       });
   }
 
 
-  export function LoginUser(){
-    
-  }
+ 
