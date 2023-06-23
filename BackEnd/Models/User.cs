@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ApiCuentos.Models
+namespace ApiStories.Models
 {
     public class User
     {

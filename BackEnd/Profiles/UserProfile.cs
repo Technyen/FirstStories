@@ -1,13 +1,14 @@
-﻿using ApiCuentos.Models;
+﻿using ApiStories.Models;
 using AutoMapper;
 
-namespace ApiCuentos.Profiles
+namespace ApiStories.Profiles
 {
     public class UserProfile : Profile
     {
         public UserProfile() 
         {
             CreateMap<CreateUserModel, User>();
+            CreateMap<LoginUserModel, User>();
         }
     }
 }

@@ -1,11 +1,11 @@
-using ApiCuentos.Services;
+using ApiStories.Services;
 using Microsoft.Net.Http.Headers;
 using Microsoft.Azure.Cosmos;
 using Azure.Identity;
 using AutoMapper;
 using Newtonsoft.Json;
 
-namespace ApiCuentos
+namespace ApiStories
 {
     public class Program
     {

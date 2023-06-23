@@ -1,6 +1,7 @@
-﻿using ApiCuentos.Models;
+﻿using System.Collections;
+using ApiStories.Models;
 
-namespace ApiCuentos.Services
+namespace ApiStories.Services
 {
     public class UserService
     {
@@ -17,6 +18,12 @@ namespace ApiCuentos.Services
           user.Id = Guid.NewGuid().ToString();
         var result = await _serviceCosmos.CreateItemAsync(user);
             return result;
+        }
+
+        public async Task<User> LoginUser(User user)
+        {
+                var result = await _serviceCosmos.ReadItemAsync(user);
+                return result;
         }
     
     }

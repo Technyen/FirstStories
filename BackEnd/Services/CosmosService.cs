@@ -1,9 +1,10 @@
 ﻿using Azure.Identity;
 using Microsoft.Azure.Cosmos;
-using ApiCuentos.Models;
-using User = ApiCuentos.Models.User;
+using ApiStories.Models;
+using User = ApiStories.Models.User;
+using System.Net;
 
-namespace ApiCuentos.Services
+namespace ApiStories.Services
 {
   
     public class CosmosService
@@ -27,6 +28,20 @@ namespace ApiCuentos.Services
             );
 
             return userCreated;
+        }
+
+        public async Task<User> ReadItemAsync(User user)
+        {
+                   
+                    ItemResponse<User> readResponse = await container.ReadItemAsync<User>(
+                        id: "a192c2fc-b122-4418-b83c-5170dab20ce1",
+                        partitionKey: new PartitionKey("a192c2fc-b122-4418-b83c-5170dab20ce1"));
+                       return readResponse;
+                
+               
+
+        
+            
         }
          
            

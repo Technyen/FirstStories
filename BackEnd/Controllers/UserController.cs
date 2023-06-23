@@ -1,10 +1,10 @@
-﻿using ApiCuentos.Models;
-using ApiCuentos.Services;
+﻿using ApiStories.Models;
+using ApiStories.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 
-namespace ApiCuentos.Controllers
+namespace ApiStories.Controllers
 {
     [Route("[controller]")]
     [ApiController]
@@ -33,6 +33,14 @@ namespace ApiCuentos.Controllers
             return await _serviceUsers.CreateUser(user);
         }
 
-        
+
+        [HttpPost("LogIn")]
+        public async Task<User> Login(LoginUserModel loginUserModel)
+        {
+            var user = _mapper.Map<User>(loginUserModel);
+            return await _serviceUsers.LoginUser(user);
+        }
+
+
     }
 }
