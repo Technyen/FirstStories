@@ -9,13 +9,14 @@ function RegisterForm(props) {
   const [password,setPassword]=useState('')
   const handleOk=()=>{
     createUser(name,email,password);
+    props.setIsUserIdendified(true);
   }
    
     return (
       <form  className="register-form">
         <h1>Sign Up</h1>
         <input type='text' value={name} onChange={e => setName(e.target.value)} placeholder='enter your Name' name='name'/><br></br>
-        <input type='text'  value={email} onChange={e => setEmail(e.target.value)} placeholder='enter your email' name='email'/><br></br>
+        <input type='email'  value={email} onChange={e => setEmail(e.target.value)} placeholder='enter your email' name='email'/><br></br>
         <input type= 'password'   value={password} onChange={e => setPassword(e.target.value)} placeholder=' enter your password' name='password'/> 
         <button onClick={handleOk}>Ok</button>
         

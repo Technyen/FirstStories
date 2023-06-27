@@ -3,6 +3,7 @@ using Microsoft.Azure.Cosmos;
 using ApiStories.Models;
 using User = ApiStories.Models.User;
 using System.Net;
+using ApiStories.Exceptions;
 
 namespace ApiStories.Services
 {
@@ -30,18 +31,36 @@ namespace ApiStories.Services
             return userCreated;
         }
 
-        public async Task<User> ReadItemAsync(User user)
+        public async Task<User> FindItemAsync(User user)
         {
-                   
-                    ItemResponse<User> readResponse = await container.ReadItemAsync<User>(
-                        id: "a192c2fc-b122-4418-b83c-5170dab20ce1",
-                        partitionKey: new PartitionKey("a192c2fc-b122-4418-b83c-5170dab20ce1"));
-                       return readResponse;
-                
-               
+            try
+            {
+                ItemResponse<User> readResponse = await container.ReadItemAsync<User>(
+                       id: "a192c2fc-b122-4418-b83c",
+                       partitionKey: new PartitionKey("a192c2fc-b122-4418"));
+                return readResponse;
 
-        
-            
+            }
+            catch (CosmosException e)
+            {
+                if (e.StatusCode == HttpStatusCode.NotFound)
+                {
+                    throw new NotFoundException("The user Not found CosmosException cod 404");
+                }
+                else
+                {
+                    throw e;
+                }
+
+
+                
+            }
+
+
+
+
+
+
         }
          
            

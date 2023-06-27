@@ -10,10 +10,12 @@ export function createUser(name,email,password) {
       email:email,
       password:password
       })
-      .then(response => {
-       console.log(response.data);
-      });
+      .then(response => 
+       console.log(response.data)
+      );
   }
 
+
+  
 
  

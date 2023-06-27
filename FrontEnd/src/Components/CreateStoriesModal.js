@@ -8,7 +8,7 @@ function CreateStoriesModal(props) {
   return (props.showModal)?(
     <div className='createStoriesWindow'>
       <div className='createStories-inner'>
-        <button className='createStories-close-btn' onClick={()=>props.setShowModal(false)}>Close</button>
+        <button className='btn btn-secondary' onClick={()=>props.setShowModal(false)}>Close</button>
           <form>
             <h2>Create Your Story</h2>
 
@@ -21,7 +21,7 @@ function CreateStoriesModal(props) {
             <label>Story:</label>
             <textarea /><br></br>
 
-            <button type="submit">Submit</button>
+            <button type="submit"className="btn btn-primary">Submit</button>
           </form>
         </div>
       </div>

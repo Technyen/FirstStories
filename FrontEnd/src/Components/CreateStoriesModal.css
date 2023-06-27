@@ -19,6 +19,7 @@
     width: 100%;
     max-width: 640px;
     background-color: white;
+    flex-direction: column;
 
 }
 
@@ -28,4 +29,11 @@
     padding: 2px;
     top: 15px;
     left: 580px;
+}
+
+input{
+    padding: 5px;
+    margin: 10px 0px;
+    border-radius: 5px;
+    border: 1px solid gray;
 }

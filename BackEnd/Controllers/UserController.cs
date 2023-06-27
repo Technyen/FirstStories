@@ -3,6 +3,7 @@ using ApiStories.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
+using ApiStories.Enums;
 
 namespace ApiStories.Controllers
 {
@@ -35,10 +36,22 @@ namespace ApiStories.Controllers
 
 
         [HttpPost("LogIn")]
-        public async Task<User> Login(LoginUserModel loginUserModel)
+        public async Task<ActionResult> Login(LoginUserModel loginUserModel)
         {
             var user = _mapper.Map<User>(loginUserModel);
-            return await _serviceUsers.LoginUser(user);
+            var result= await _serviceUsers.LoginUser(user);
+            if (result == LoginResult.Success)
+            {
+                return Ok();
+            }
+            else if (result == LoginResult.NotFound)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Unauthorized();    
+            }
         }
 
 
