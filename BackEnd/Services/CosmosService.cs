@@ -4,65 +4,49 @@ using ApiStories.Models;
 using User = ApiStories.Models.User;
 using System.Net;
 using ApiStories.Exceptions;
+using System.Linq.Expressions;
+using Microsoft.Azure.Cosmos.Linq;
+using Microsoft.Azure.Documents;
+using Microsoft.Azure.Documents.Client;
+using Microsoft.Azure.Documents.Linq;
+using Database = Microsoft.Azure.Cosmos.Database;
+using System.Collections.Generic;
 
 namespace ApiStories.Services
 {
-  
     public class CosmosService
     {
-        private readonly Container container;
         private readonly CosmosClient _client;
-        public CosmosService(CosmosClient client) 
+        private readonly Database _database;
+        private readonly Container _container;
+        private readonly Dictionary<string, CosmosData> _cosmosData;
+
+        public CosmosService(CosmosClient client)
         {
             _client = client;
-            Database database = _client.GetDatabase("cosmosapistories");
-            container = database.GetContainer("stories");
+            _database = _client.GetDatabase("cosmosapistories");
+            _container = _database.GetContainer("users");
+            _cosmosData = new Dictionary<string, CosmosData>();
+
+            _cosmosData.Add(nameof(User), new CosmosData
+            {
+                ContainerName = "users",
+                PartitionKeyPropName = "type",
+            });
         }
-       
+
 
         public async Task<User> CreateItemAsync(User user)
-        {// Create new object and upsert (create or replace) to container
-            
-            
-            var userCreated = await container.CreateItemAsync<User>(
-               user 
-            );
-
-            return userCreated;
-        }
-
-        public async Task<User> FindItemAsync(User user)
         {
-            try
-            {
-                ItemResponse<User> readResponse = await container.ReadItemAsync<User>(
-                       id: "a192c2fc-b122-4418-b83c",
-                       partitionKey: new PartitionKey("a192c2fc-b122-4418"));
-                return readResponse;
-
-            }
-            catch (CosmosException e)
-            {
-                if (e.StatusCode == HttpStatusCode.NotFound)
-                {
-                    throw new NotFoundException("The user Not found CosmosException cod 404");
-                }
-                else
-                {
-                    throw e;
-                }
-
-
-                
-            }
-
-
-
-
-
-
+            return  await _container.CreateItemAsync<User>(user);
         }
-         
-           
+
+        public async Task<T> FindItemAsync<T>(string value, string property, string type)
+        {
+            var queryString = $"SELECT * FROM {_cosmosData[type].ContainerName} p WHERE p.{property} = '{value}'".ToLower();
+            using var filteredFeed = _container.GetItemQueryIterator<T>(queryDefinition: new QueryDefinition(query: queryString));
+            var items = await filteredFeed.ReadNextAsync();
+            return items.FirstOrDefault();
+        }
     }
 }

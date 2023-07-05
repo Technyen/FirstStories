@@ -3,6 +3,8 @@ using ApiStories.Enums;
 using ApiStories.Exceptions;
 using ApiStories.Models;
 using Microsoft.Identity.Client;
+using System.Reflection;
+using System.ComponentModel.DataAnnotations;
 
 namespace ApiStories.Services
 {
@@ -15,7 +17,7 @@ namespace ApiStories.Services
             _serviceCosmos = serviceCosmos;
         }
 
-
+  
         public async Task<User> CreateUser(User user)
         {
             user.Id = Guid.NewGuid().ToString();
@@ -25,32 +27,20 @@ namespace ApiStories.Services
 
         public async Task<LoginResult> LoginUser(User user)
         {
-            try
-            {
-                var result = await _serviceCosmos.FindItemAsync(user);
-                if (user.Password == result.Password)
-                {
-                    return LoginResult.Success;
-                }
-                else
-                {
-                    return LoginResult.InvalidPassword;
-
-                }
-
-
-
-            }
-            catch (NotFoundException )
+            var userFound = await _serviceCosmos.FindItemAsync<User>(user.Email, nameof(User.Email), nameof(User));
+            if (userFound ==null)
             {
                 return LoginResult.NotFound;
 
-
             }
-
-
-
-
+            else if (user.Password == userFound.Password)
+            {
+                return LoginResult.Success;
+            }
+            else
+            {
+                return LoginResult.InvalidPassword;
+            }
         }
     }
 }
