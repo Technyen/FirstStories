@@ -26,7 +26,7 @@ namespace ApiStories.Controllers
 
 
 
-        [HttpPost]
+        [HttpPost("create")]
         public async Task<User> Create(CreateUserModel createUserModel)
         {
             var user = _mapper.Map<User>(createUserModel);
@@ -35,7 +35,7 @@ namespace ApiStories.Controllers
         }
 
 
-        [HttpPost("LogIn")]
+        [HttpPost("login")]
         public async Task<ActionResult> Login(LoginUserModel loginUserModel)
         {
             var user = _mapper.Map<User>(loginUserModel);
