@@ -36,9 +36,9 @@ namespace ApiStories.Services
         }
 
 
-        public async Task<User> CreateItemAsync(User user)
+        public async Task<T> CreateItemAsync<T>(T user)
         {
-            return  await _container.CreateItemAsync<User>(user);
+            return  await _container.CreateItemAsync<T>(user);
         }
 
         public async Task<T> FindItemAsync<T>(string value, string property, string type)
