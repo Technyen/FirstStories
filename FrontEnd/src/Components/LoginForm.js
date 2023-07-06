@@ -8,14 +8,12 @@ function LoginForm(props) {
   const [loginResult, setLoginResult] = useState('')
 
 
-  function handleOk() {
-    loginUser(email, password)
-    .then(response => {
-      setLoginResult(response);
-      if (loginResult === null) {
-        props.setIsUserIdendified(true);
-      }
-    })
+  async function handleOk() {
+    var result = await loginUser(email, password);
+    setLoginResult(result);
+    if (result === null) {
+      props.setIsUserIdendified(true);
+    }
 
   }
 
@@ -26,7 +24,7 @@ function LoginForm(props) {
       <input type='password' value={password} onChange={e => setPassword(e.target.value)} placeholder=' enter your password' name='password' />
       <button className='register-btn' onClick={() => handleOk()}>Ok</button>
       <p>Create account?</p> <a style={{ color: "red", cursor: 'pointer' }} onClick={() => props.setIsUserRegistered(false)}>Signup</a>
-      <p className="text-danger">adffad{loginResult}</p>
+      <p className="text-danger">{loginResult}</p>
     </div>
 
 
