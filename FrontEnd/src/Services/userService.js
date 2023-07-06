@@ -3,7 +3,6 @@ import axios from "axios";
 
 const baseURL = "https://localhost:7078/Users";
 export function createUser(name, email, password) {
-
   axios
     .post(`${baseURL}/create`, {
       name: name,
@@ -35,4 +34,3 @@ export async function loginUser(email, password) {
     }
   }
 }
-
