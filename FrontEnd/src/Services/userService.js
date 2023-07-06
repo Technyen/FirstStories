@@ -17,24 +17,24 @@ export function createUser(name, email, password) {
 
 
  
-  export function loginUser(email, password){
-    axios
+  export  function loginUser(email, password){
+     return axios
     .post(`${baseURL}/login`,{
       email:email,
       password:password
     })
-    .then(response =>
-      console.log (response.data)
-    )
+    .then(response =>{
+      return null;
+    })
     .catch(error =>{
       if (error.response.status ==401) {
-        console.log("password incorrect")
+        return "password incorrect";
         
       } else if (error.response.status ==404){
-        console.log("email incorrect")
+        return "email incorrect";
         
       }else{
-        console.log("unknown error")
+       return "unknown error";
       }
     })
    
