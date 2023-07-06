@@ -26,12 +26,20 @@ namespace ApiStories.Controllers
 
 
 
-        [HttpPost("create")]
-        public async Task<User> Create(CreateUserModel createUserModel)
+        [HttpPost("register")]
+        public async Task<ActionResult> Register(RegisterUserModel registerUserModel)
         {
-            var user = _mapper.Map<User>(createUserModel);
+            var user = _mapper.Map<User>(registerUserModel);
 
-            return await _serviceUsers.CreateUser(user);
+            var result =await _serviceUsers.RegisterUser(user);
+            if (result == RegisterResult.Success)
+            {
+                return Ok();
+            }
+            else
+            {
+                return Conflict();
+            }
         }
 
 

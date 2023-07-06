@@ -1,29 +1,31 @@
 import React, { useState } from 'react';
-import { createUser } from '../Services/userService';
-
-
+import { registerUser } from '../Services/userService';
 
 function RegisterForm(props) {
-  const [name,setName] = useState('')
-  const [email, setEmail]=useState('')
-  const [password,setPassword]=useState('')
-  const handleOk=()=>{
-    createUser(name,email,password);
-    props.setIsUserIdendified(true);
-  }
-   
-    return (
-      <form  className="register-form">
-        <h1>Sign Up</h1>
-        <input type='text' value={name} onChange={e => setName(e.target.value)} placeholder='enter your Name' name='name'/><br></br>
-        <input type='email'  value={email} onChange={e => setEmail(e.target.value)} placeholder='enter your email' name='email'/><br></br>
-        <input type= 'password'   value={password} onChange={e => setPassword(e.target.value)} placeholder=' enter your password' name='password'/> 
-        <button onClick={handleOk}>Ok</button>
-        
-        <p>Already have an Account ? <a style={{color:"red",cursor:'pointer'}} onClick={()=>{props.setIsUserRegistered(true)}}>SignIn</a></p>
-      </form>
-    ) 
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [registerResult, setRegisterResult] = useState('')
+
+  async function handleOk() {
+    var result = await registerUser(name, email, password);
+    setRegisterResult(result);
+    if (result === null) {
+      props.setIsUserIdendified(true);
+    }
   }
 
-  export default RegisterForm
-  
+  return (
+    <div>
+      <h1>Sign Up</h1>
+      <input type='text' value={name} onChange={e => setName(e.target.value)} placeholder='enter your name' name='name' /><br></br>
+      <input type='email' value={email} onChange={e => setEmail(e.target.value)} placeholder='enter your email' name='email' /><br></br>
+      <input type='password' value={password} onChange={e => setPassword(e.target.value)} placeholder=' enter your password' name='password' />
+      <button onClick={() => handleOk()}>Ok</button>
+      <p className="text-danger">{registerResult}</p>
+      <p>Already have an Account?</p><a style={{ color: "red", cursor: 'pointer' }} onClick={() => props.setIsUserRegistered(true)}>Signin</a>
+    </div>
+  )
+}
+
+export default RegisterForm

@@ -17,12 +17,19 @@ namespace ApiStories.Services
             _serviceCosmos = serviceCosmos;
         }
 
-  
-        public async Task<User> CreateUser(User user)
+        public async Task<RegisterResult> RegisterUser(User user)
         {
-            user.Id = Guid.NewGuid().ToString();
-            var result = await _serviceCosmos.CreateItemAsync(user);
-            return result;
+            var userFound = await _serviceCosmos.FindItemAsync<User>(user.Email, nameof(User.Email), nameof(User));
+            if (userFound == null)
+            {
+                user.Id = Guid.NewGuid().ToString();
+                await _serviceCosmos.CreateItemAsync(user);
+                return RegisterResult.Success;
+            }
+            else
+            {
+                return RegisterResult.Duplicate;
+            }
         }
 
         public async Task<LoginResult> LoginUser(User user)

@@ -1,6 +1,6 @@
 ﻿namespace ApiStories.Models
 {
-    public class CreateUserModel
+    public class RegisterUserModel
     {
         
         public string Name { get; set; }

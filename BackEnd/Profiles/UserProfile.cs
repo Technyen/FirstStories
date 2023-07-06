@@ -7,7 +7,7 @@ namespace ApiStories.Profiles
     {
         public UserProfile() 
         {
-            CreateMap<CreateUserModel, User>();
+            CreateMap<RegisterUserModel, User>();
             CreateMap<LoginUserModel, User>();
         }
     }

@@ -1,12 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-namespace ApiStories.Enums
+﻿namespace ApiStories.Enums
 {
     public enum LoginResult
     {
         NotFound,
         Success, 
         InvalidPassword,
-
     }
 }
