@@ -41,9 +41,9 @@ namespace ApiStories.Services
             return  await _container.CreateItemAsync<T>(user);
         }
 
-        public async Task<T> FindItemAsync<T>(string value, string property, string type)
+        public async Task<T> FindItemAsync<T>(string value, string property)
         {
-            var queryString = $"SELECT * FROM {_cosmosData[type].ContainerName} p WHERE p.{property} = '{value}'".ToLower();
+            var queryString = $"SELECT * FROM {_cosmosData[typeof(T).Name].ContainerName} p WHERE p.{property} = '{value}'".ToLower();
             using var filteredFeed = _container.GetItemQueryIterator<T>(queryDefinition: new QueryDefinition(query: queryString));
             var items = await filteredFeed.ReadNextAsync();
             return items.FirstOrDefault();
