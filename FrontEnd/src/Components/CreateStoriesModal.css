@@ -6,7 +6,6 @@
     width: 100%;
     height: 100vh;
     background-color: rgba(0,0,0,0.5);
-
     display:flex;
     justify-content: center;
     align-items: center;
@@ -15,25 +14,48 @@
 .createStories-inner
 {
     position: relative;
-    padding: 32px;
+    padding: 20px;
     width: 100%;
     max-width: 640px;
     background-color: white;
     flex-direction: column;
-
+    border-radius: 5px;
 }
 
-.createStories-close-btn
+.btn btn-secondary
 {
     position:absolute;
     padding: 2px;
     top: 15px;
-    left: 580px;
+    left: 600px;
 }
 
-input{
+.input-create
+{
     padding: 5px;
-    margin: 10px 0px;
+    margin: 5px;
     border-radius: 5px;
     border: 1px solid gray;
+    width: 99%;
+}
+
+
+.btn btn-secondary
+{
+    margin:10px;
+}
+
+textarea 
+{
+    width: 100%;
+    height: 300%;
+}
+
+.btn-secondary-create
+{
+    top: 20px;
+    position:absolute;
+    border-radius: 5px;
+    padding: 5px;
+    left: 560px;
 }

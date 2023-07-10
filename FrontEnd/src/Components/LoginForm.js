@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { loginUser } from '../Services/userService';
+import "./LoginForm.css"
 
 function LoginForm(props) {
   const [email, setEmail] = useState('')
@@ -19,7 +20,7 @@ function LoginForm(props) {
       <h1>Log In</h1>
       <input type='email' value={email} onChange={e => setEmail(e.target.value)} placeholder='enter your email' name='email' /><br></br>
       <input type='password' value={password} onChange={e => setPassword(e.target.value)} placeholder=' enter your password' name='password' />
-      <button onClick={() => handleOk()}>Ok</button>
+      <button className="btn btn-primary" onClick={() => handleOk()}>Ok</button>
       <p className="text-danger">{loginResult}</p>
       <p>Create account?</p><a style={{ color: "red", cursor: 'pointer' }} onClick={() => props.setIsUserRegistered(false)}>Signup</a>
     </div>
