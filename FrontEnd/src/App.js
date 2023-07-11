@@ -1,13 +1,14 @@
 import React from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './Components/Header';
-import { useState} from "react";
+import { useState } from "react";
 import CreateStoriesModal from "./Components/CreateStoriesModal";
 import IdentificationModal from "./Components/IdentificationModal";
+import MyImage from "./Images/Caperucita-Roja.webp" 
+import "./App.css";
 
 export default function App() {
   const [showModal, setShowModal] = useState(false);
-  const [isUserIndentified, setIsUserIdendified]=useState(false);
+  const [isUserIndentified, setIsUserIdendified] = useState(false);
 
   return (
     <div className="Header">
@@ -17,14 +18,22 @@ export default function App() {
           <h1>CHILDREN'S STORIES</h1>
           <p>Make you own stories and share with your kids</p>
           <br></br>
-          <button type="button" className="btn btn-info btn-lg" data-toggle="modal" onClick={()=>setShowModal(true)}>Create Stories</button>
-          {
-            isUserIndentified?
-            <CreateStoriesModal showModal={showModal} setShowModal={setShowModal}/>:
-            <IdentificationModal showModal={showModal} setShowModal={setShowModal} setIsUserIdendified={setIsUserIdendified}/>
-          }
+          <img src={MyImage} className="img-main"/>
+          <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => setShowModal(true)}>
+            Create stories
+          </button>
+          <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal-dialog">
+              {
+                isUserIndentified ?
+                <CreateStoriesModal showModal={showModal} setShowModal={setShowModal} /> :
+                <IdentificationModal showModal={showModal} setShowModal={setShowModal} setIsUserIdendified={setIsUserIdendified} />
+              }
+            </div>
+          </div>
         </main>
       </div>
     </div>
   );
+
 }
