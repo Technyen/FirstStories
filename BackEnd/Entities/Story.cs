@@ -1,4 +1,4 @@
-﻿namespace ApiStories.Models
+﻿namespace ApiStories.Entities
 {
     public class Story
     {

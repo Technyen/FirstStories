@@ -1,7 +1,6 @@
-﻿using ApiStories.Models;
+﻿using ApiStories.Entities;
 using Microsoft.Azure.Cosmos;
-using Database = Microsoft.Azure.Cosmos.Database;
-using User = ApiStories.Models.User;
+using User = ApiStories.Entities.User;
 
 namespace ApiStories.Services
 {

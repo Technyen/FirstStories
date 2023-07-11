@@ -1,4 +1,5 @@
-﻿using ApiStories.Models;
+﻿using ApiStories.Entities;
+using ApiStories.Models;
 using AutoMapper;
 
 namespace ApiStories.Profiles

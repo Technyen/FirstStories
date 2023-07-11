@@ -1,5 +1,5 @@
-﻿using ApiStories.Enums;
-using ApiStories.Models;
+﻿using ApiStories.Entities;
+using ApiStories.Enums;
 
 namespace ApiStories.Services
 {

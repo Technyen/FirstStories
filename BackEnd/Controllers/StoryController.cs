@@ -4,6 +4,7 @@ using AutoMapper;
 using ApiStories.Services;
 using ApiStories.Controllers;
 using ApiStories.Enums;
+using ApiStories.Entities;
 
 namespace ApiStories.Controllers
 {

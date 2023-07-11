@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using ApiStories.Enums;
 using ApiStories.Exceptions;
-using ApiStories.Models;
 using Microsoft.Identity.Client;
 using System.Reflection;
 using System.ComponentModel.DataAnnotations;
+using ApiStories.Entities;
 
 namespace ApiStories.Services
 {

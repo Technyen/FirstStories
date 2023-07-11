@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using ApiStories.Enums;
+using ApiStories.Entities;
 
 namespace ApiStories.Controllers
 {
