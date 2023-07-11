@@ -22,15 +22,25 @@ export default function App() {
           <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => setShowModal(true)}>
             Create stories
           </button>
-          <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div className="modal-dialog">
+          
               {
                 isUserIndentified ?
-                <CreateStoriesModal showModal={showModal} setShowModal={setShowModal} /> :
+                <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog modal-lg">
+                <CreateStoriesModal showModal={showModal} setShowModal={setShowModal} />
+                 
+                 </div>
+                 </div> 
+                
+               :
+               <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+               <div className="modal-dialog">
                 <IdentificationModal showModal={showModal} setShowModal={setShowModal} setIsUserIdendified={setIsUserIdendified} />
+                
+                </div>
+                </div> 
               }
-            </div>
-          </div>
+           
         </main>
       </div>
     </div>
