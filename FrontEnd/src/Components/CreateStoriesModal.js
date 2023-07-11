@@ -12,6 +12,8 @@ function CreateStoriesModal(props) {
             <input className="form-control" id="floatingInput"/><br></br>
             <label>Category:</label><br></br>
             <input className="form-control" id="floatingInput"/><br></br>
+            <label>Age-appropiate:</label><br></br>
+            <input className="form-control" id="floatingInput"/><br></br>
             <label>Story:</label><br></br>
             <textarea className="form-control" placeholder="Write your story here" id="floatingTextarea"/><br></br>
             <button className="btn btn-primary" type="submit">Submit</button>
