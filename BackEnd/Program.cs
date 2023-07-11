@@ -51,6 +51,7 @@ namespace ApiStories
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddScoped<UserService>();
+            builder.Services.AddScoped<StoryService>();
             builder.Services.AddScoped<CosmosService>();
 
             var app = builder.Build();

@@ -8,7 +8,7 @@ namespace ApiStories.Models
     public class CosmosData
     {
         public string ContainerName { set; get; }
-        public string PartitionKeyPropName { set; get; } 
+        public string PartitionKey { set; get; } 
         
     }
 }
