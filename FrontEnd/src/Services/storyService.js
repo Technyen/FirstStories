@@ -1,13 +1,13 @@
 import axios from "axios";
 
 const baseURL = "https://localhost:7078/Stories";
-export async function registerUser(tittle, category, ageAppropiate, story) {
+export async function createStory(title, category, ageAppropiate, description) {
   try {
     await axios.post(`${baseURL}/create`, {
         title: title,
         category: category,
         ageAppropiate: ageAppropiate,
-        story:story
+        description:description
       });
     return null;
 
